@@ -1,22 +1,18 @@
-@media (max-width:520px){
-  .social-buttons{
-    flex-direction: column;
-    gap: 0.75rem;
-    align-items: stretch;
-  }
-
-  .btn{
-    min-width: 0;
-    width: 100%;
-    max-width: 420px;
-    font-size: 1rem;
-    padding: 0.9rem 1rem;
-  }
-
-  .logo{
-    width: 72px;
-    height: 72px;
-  }
-
-  .content{ padding: 1rem; }
+/* Lunr search styles */
+.search-wrap { width:100%; max-width:720px; margin: 1rem auto; text-align:left; }
+#search-input {
+  width:100%;
+  padding:0.88rem 1rem;
+  border-radius:12px;
+  background: #050505;
+  border:1px solid rgba(255,255,255,0.06);
+  color:#fff;
+  font-weight:600;
+  outline:none;
 }
+#search-input:focus { box-shadow: 0 6px 24px rgba(138,180,255,0.06); }
+.search-results { margin-top:0.5rem; }
+.sr-item { padding:0.6rem 0; border-bottom:1px solid rgba(255,255,255,0.03); }
+.sr-title { color:#fff; font-weight:700; text-decoration:none; }
+.sr-snippet { color: rgba(255,255,255,0.72); margin:0.35rem 0 0; font-size:0.95rem; }
+.no-results { color:var(--muted); padding:0.5rem 0; }
