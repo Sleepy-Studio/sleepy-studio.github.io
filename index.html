@@ -51,7 +51,35 @@
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const year = document.getElementById('year');
+    if (year) year.textContent = new Date().getFullYear();
+
+    const logo = document.querySelector('.logo-link');
+    const ctaButtons = document.querySelectorAll('.btn');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function updateLogoOverlaps() {
+      if (!logo || reducedMotion.matches) {
+        ctaButtons.forEach((button) => button.classList.remove('is-logo-overlapping'));
+      } else {
+        const logoBounds = logo.getBoundingClientRect();
+
+        ctaButtons.forEach((button) => {
+          const buttonBounds = button.getBoundingClientRect();
+          const overlaps =
+            logoBounds.left < buttonBounds.right &&
+            logoBounds.right > buttonBounds.left &&
+            logoBounds.top < buttonBounds.bottom &&
+            logoBounds.bottom > buttonBounds.top;
+
+          button.classList.toggle('is-logo-overlapping', overlaps);
+        });
+      }
+
+      requestAnimationFrame(updateLogoOverlaps);
+    }
+
+    requestAnimationFrame(updateLogoOverlaps);
   </script>
 </body>
 </html>
