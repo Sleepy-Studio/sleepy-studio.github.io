@@ -190,6 +190,22 @@ body{
   opacity: 0.45;
 }
 
+.btn.is-logo-overlapping{
+  background:transparent !important;
+  box-shadow:none;
+}
+
+.btn.is-logo-overlapping::after{
+  background:radial-gradient(circle at center, rgba(255,255,255,0.38), rgba(138,180,255,0.18) 42%, transparent 72%);
+  animation:logo-pass-glow 0.7s ease-in-out infinite;
+  opacity:1;
+}
+
+@keyframes logo-pass-glow{
+  0%, 100%{ transform:scale(1); opacity:0.5; filter:blur(2px); }
+  50%{ transform:scale(1.12); opacity:1; filter:blur(8px); }
+}
+
 /* Accessibility: respect prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   .btn, .btn::after, .logo-link, .logo { transition: none !important; animation: none !important; transform: none !important; }
