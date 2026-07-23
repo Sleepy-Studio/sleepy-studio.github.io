@@ -32,12 +32,13 @@ body{
 
 .site-header{
   text-align:center;
+  padding-top:calc(var(--logo-size) + 0.5rem);
   margin-bottom:2rem;
 }
 
 .logo-link{
   position:fixed;
-  top:0;
+  top:3rem;
   left:0;
   z-index:10;
   display:block;
@@ -66,8 +67,8 @@ body{
 }
 
 @keyframes dvd-bounce-y{
-  from{ transform:translateY(calc(50dvh - var(--logo-half-size))); }
-  to{ transform:translateY(calc(100dvh - var(--logo-size))); }
+  from{ transform:translateY(0); }
+  to{ transform:translateY(calc(100dvh - var(--logo-size) - 3rem)); }
 }
 
 .site-title{
@@ -189,6 +190,10 @@ body{
 /* Accessibility: respect prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   .btn, .btn::after, .logo-link, .logo { transition: none !important; animation: none !important; transform: none !important; }
+
+  .site-header{
+    padding-top:0;
+  }
 
   .logo-link{
     position:static;
