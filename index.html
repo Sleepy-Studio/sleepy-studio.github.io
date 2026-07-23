@@ -56,6 +56,8 @@
 
     const logo = document.querySelector('.logo-link');
     const ctaButtons = document.querySelectorAll('.btn');
+    const title = document.querySelector('.site-title');
+    const ctaGroup = document.querySelector('.social-buttons');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     function updateLogoOverlaps() {
@@ -80,6 +82,26 @@
     }
 
     requestAnimationFrame(updateLogoOverlaps);
+
+    function startTitleJourney() {
+      if (!title || !ctaGroup || reducedMotion.matches) return;
+
+      const titleBounds = title.getBoundingClientRect();
+      const ctaBounds = ctaGroup.getBoundingClientRect();
+      const titleScale = 1.45;
+      const bottomMargin = 24;
+      const titleCenterX = titleBounds.left + titleBounds.width / 2;
+      const titleCenterY = titleBounds.top + titleBounds.height / 2;
+      const targetCenterX = ctaBounds.left + ctaBounds.width / 2;
+      const targetCenterY =
+        ctaBounds.top - bottomMargin - (titleBounds.height * titleScale) / 2;
+
+      title.style.setProperty('--title-shift-x', `${targetCenterX - titleCenterX}px`);
+      title.style.setProperty('--title-shift-y', `${targetCenterY - titleCenterY}px`);
+      title.classList.add('is-logo-bouncing');
+    }
+
+    setTimeout(startTitleJourney, 2000);
   </script>
 </body>
 </html>
