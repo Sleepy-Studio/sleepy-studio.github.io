@@ -9,6 +9,8 @@
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   --radius: 14px;
   --gap: 1.25rem;
+  --logo-size: 88px;
+  --logo-half-size: 44px;
   color-scheme: dark;
 }
 
@@ -33,15 +35,39 @@ body{
   margin-bottom:2rem;
 }
 
+.logo-link{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:10;
+  display:block;
+  width:var(--logo-size);
+  height:var(--logo-size);
+  will-change:transform;
+  animation:dvd-bounce-x 8.7s linear 2s infinite alternate both;
+}
+
 .logo{
-  width:88px;
-  height:88px;
+  width:var(--logo-size);
+  height:var(--logo-size);
   border-radius:16px;
   display:block;
-  margin:0 auto 0.5rem;
+  margin:0;
   object-fit:cover;
   border:2px solid rgba(255,255,255,0.06);
   background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.005));
+  will-change:transform;
+  animation:dvd-bounce-y 6.3s linear 2s infinite alternate both;
+}
+
+@keyframes dvd-bounce-x{
+  from{ transform:translateX(calc(50vw - var(--logo-half-size))); }
+  to{ transform:translateX(calc(100vw - var(--logo-size))); }
+}
+
+@keyframes dvd-bounce-y{
+  from{ transform:translateY(calc(50dvh - var(--logo-half-size))); }
+  to{ transform:translateY(calc(100dvh - var(--logo-size))); }
 }
 
 .site-title{
@@ -162,7 +188,17 @@ body{
 
 /* Accessibility: respect prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
-  .btn, .btn::after { transition: none !important; animation: none !important; transform: none !important; }
+  .btn, .btn::after, .logo-link, .logo { transition: none !important; animation: none !important; transform: none !important; }
+
+  .logo-link{
+    position:static;
+    width:auto;
+    height:auto;
+  }
+
+  .logo{
+    margin:0 auto 0.5rem;
+  }
 }
 
 /* Footer and utilities */
@@ -200,9 +236,9 @@ body{
     padding: 0.9rem 1rem;
   }
 
-  .logo{
-    width: 72px;
-    height: 72px;
+  :root{
+    --logo-size:72px;
+    --logo-half-size:36px;
   }
 
   .content{ padding: 1rem; }
