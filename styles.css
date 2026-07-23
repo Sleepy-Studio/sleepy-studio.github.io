@@ -83,38 +83,42 @@ body{
   letter-spacing:0.02em;
   display:inline-block;
   transform-origin:center;
-  animation:logo-title-colors 3.2s ease-in-out 2s infinite alternate both;
+  will-change:transform;
 }
 
-@keyframes logo-title-colors{
+.site-title.is-logo-bouncing{
+  animation:logo-title-journey 12s cubic-bezier(.22,.61,.36,1) both;
+}
+
+@keyframes logo-title-journey{
   0%{
     color:var(--fg);
-    transform:scale(1);
+    transform:translate(0, 0) scale(1);
     text-shadow:none;
   }
 
-  25%{
+  38%{
     color:var(--logo-yellow);
-    transform:scale(1.12);
-    text-shadow:0 0 18px color-mix(in srgb, var(--logo-yellow) 60%, transparent);
+    transform:translate(var(--title-shift-x), var(--title-shift-y)) scale(1.45);
+    text-shadow:0 0 20px color-mix(in srgb, var(--logo-yellow) 65%, transparent);
   }
 
-  55%{
+  53%{
     color:var(--logo-red);
-    transform:scale(0.96);
-    text-shadow:0 0 20px color-mix(in srgb, var(--logo-red) 65%, transparent);
+    transform:translate(var(--title-shift-x), var(--title-shift-y)) scale(1.45);
+    text-shadow:0 0 24px color-mix(in srgb, var(--logo-red) 70%, transparent);
   }
 
-  78%{
-    color:var(--logo-amber);
-    transform:scale(1.08);
-    text-shadow:0 0 22px color-mix(in srgb, var(--logo-amber) 65%, transparent);
+  68%{
+    color:var(--logo-deep-red);
+    transform:translate(var(--title-shift-x), var(--title-shift-y)) scale(1.45);
+    text-shadow:0 0 20px color-mix(in srgb, var(--logo-deep-red) 65%, transparent);
   }
 
   100%{
-    color:var(--logo-deep-red);
-    transform:scale(1);
-    text-shadow:0 0 16px color-mix(in srgb, var(--logo-deep-red) 55%, transparent);
+    color:var(--fg);
+    transform:translate(0, 0) scale(1);
+    text-shadow:none;
   }
 }
 
