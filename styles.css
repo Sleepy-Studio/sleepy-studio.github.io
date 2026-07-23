@@ -62,8 +62,9 @@ body{
 }
 
 @keyframes dvd-bounce-x{
-  from{ transform:translateX(calc(50vw - var(--logo-half-size))); }
-  to{ transform:translateX(calc(100vw - var(--logo-size))); }
+  0%{ transform:translateX(calc(50vw - var(--logo-half-size))); }
+  50%{ transform:translateX(calc(100vw - var(--logo-size))); }
+  100%{ transform:translateX(0); }
 }
 
 @keyframes dvd-bounce-y{
