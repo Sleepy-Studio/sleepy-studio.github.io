@@ -11,6 +11,10 @@
   --gap: 1.25rem;
   --logo-size: 88px;
   --logo-half-size: 44px;
+  --logo-yellow: #f7c948;
+  --logo-amber: #ff9f1c;
+  --logo-red: #ef4444;
+  --logo-deep-red: #c81e3a;
   color-scheme: dark;
 }
 
@@ -77,6 +81,41 @@ body{
   font-size:1.4rem;
   font-weight:700;
   letter-spacing:0.02em;
+  display:inline-block;
+  transform-origin:center;
+  animation:logo-title-colors 3.2s ease-in-out 2s infinite alternate both;
+}
+
+@keyframes logo-title-colors{
+  0%{
+    color:var(--fg);
+    transform:scale(1);
+    text-shadow:none;
+  }
+
+  25%{
+    color:var(--logo-yellow);
+    transform:scale(1.12);
+    text-shadow:0 0 18px color-mix(in srgb, var(--logo-yellow) 60%, transparent);
+  }
+
+  55%{
+    color:var(--logo-red);
+    transform:scale(0.96);
+    text-shadow:0 0 20px color-mix(in srgb, var(--logo-red) 65%, transparent);
+  }
+
+  78%{
+    color:var(--logo-amber);
+    transform:scale(1.08);
+    text-shadow:0 0 22px color-mix(in srgb, var(--logo-amber) 65%, transparent);
+  }
+
+  100%{
+    color:var(--logo-deep-red);
+    transform:scale(1);
+    text-shadow:0 0 16px color-mix(in srgb, var(--logo-deep-red) 55%, transparent);
+  }
 }
 
 .content{
@@ -219,7 +258,7 @@ body{
 
 /* Accessibility: respect prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
-  .btn, .btn::after, .logo-link, .logo { transition: none !important; animation: none !important; transform: none !important; }
+  .btn, .btn::after, .logo-link, .logo, .site-title { transition: none !important; animation: none !important; transform: none !important; }
 
   .site-header{
     padding-top:0;
