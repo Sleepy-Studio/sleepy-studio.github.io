@@ -91,6 +91,8 @@ body{
 
 /* Social container */
 .social-buttons{
+  position:relative;
+  z-index:20;
   display:flex;
   gap:1rem;
   align-items:center;
